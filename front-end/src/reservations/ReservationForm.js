@@ -72,6 +72,11 @@ export default function ReservationForm({ reservation_id }) {
                 setReservationsError(["Reservations are only allowed between 10:30am and 9:30pm."]);
             }
         }
+
+        if (name === "mobile_number") {
+            target.value = target.value.replace(/\D/g, "");
+        }
+
         // set the form state
         setForm({
             ...form,
@@ -148,7 +153,7 @@ export default function ReservationForm({ reservation_id }) {
                     <label htmlFor="mobile_number">Mobile Phone Number</label>
                     <input 
                         className="form-control"
-                        type="text"
+                        type="tel"
                         name="mobile_number"
                         id="mobile_number"
                         placeholder="555-555-5555"
