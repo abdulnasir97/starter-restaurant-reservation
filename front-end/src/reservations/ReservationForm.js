@@ -3,6 +3,15 @@ import { useHistory } from "react-router-dom";
 import { postReservation, readReservation, putReservation } from "../utils/api";
 import ErrorAlert from "../layout/ErrorAlert";
 
+function formateDate(date){
+    const fDate = new Date(`${date}`);
+    const day = fDate.getDate().toString().padStart(2, '0');
+    const month = (fDate.getMonth() + 1).toString().padStart(2, '0');
+    const year =fDate.getFullYear();
+    return `${year}-${month}-${day}`;
+}
+
+
 export default function ReservationForm({ reservation_id }) {
     const initialFormState = {
         first_name: "",
@@ -26,7 +35,9 @@ export default function ReservationForm({ reservation_id }) {
             async function loadReservation() {
                 try {
                     const reservation = await readReservation(reservation_id, abortController.status);
-                    setForm(reservation);
+                    const modifyReservation = {...reservation};
+                    modifyReservation.reservation_date = formateDate(reservation.reservation_date) // yyyy-MM-dd
+                    setForm(modifyReservation);
                 } catch (error) {
                     setReservationsError([error.message]);
                 }
@@ -43,9 +54,18 @@ export default function ReservationForm({ reservation_id }) {
                         
         // check that reservation date is not on a Tuesday and / or not in the past
         if (name === "reservation_date") {
+            console.log(value)
+            // console.log("hardcode: ", new Date('2023-09-20 PDT'))
             const date = new Date(`${value} PDT`);
             const reservation = date.getTime();
-            const now = Date.now();
+            let now = new Date();
+                now = now.getTime();
+            
+            console.log({
+                 reservation:  new Date(reservation),
+                 now: new Date(now),
+                reservationIsLess: reservation < now
+            })
 
             if (date.getUTCDay() === 2 && reservation < now) {
                 setReservationsError([
@@ -55,6 +75,8 @@ export default function ReservationForm({ reservation_id }) {
             } else if (date.getUTCDay() === 2) {
                 setReservationsError(["The restaurant is closed on Tuesday."]);
             } else if (reservation < now) {
+                console.log('this check')
+
                 setReservationsError(["Reservation must be in the future."]);
             } else {
                 setReservationsError([]);
@@ -66,6 +88,7 @@ export default function ReservationForm({ reservation_id }) {
             const open = 1030;
             const close = 2130;
             const reservation = value.substring(0, 2) + value.substring(3);
+            console.log(reservation)
             if (reservation > open && reservation < close) {
                 setReservationsError([]);
             } else {

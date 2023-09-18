@@ -11,7 +11,7 @@ export default function Table({ table, table_name, capacity, status }) {
 
     const finishHandler = (event) => {
         event.preventDefault();
-        if (window.confirm("Is this table ready to seat new guests? This cannot be undone.")) {
+        if (window.confirm("Is this table ready to seat new guests?")) {
             const abortController = new AbortController();
             // DELETE request
             async function finish() {

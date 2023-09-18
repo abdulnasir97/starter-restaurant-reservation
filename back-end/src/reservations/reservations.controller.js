@@ -58,12 +58,16 @@ function peopleIsNumber(req, res, next) {
 // validation middleware: checks that the reservation_date & reservation_time are not in the past
 function notInPast(req, res, next) {
   const { reservation_date, reservation_time } = req.body.data;
-  const reservation = new Date(`${reservation_date} PDT`).setHours(
-    reservation_time.substring(0, 2),
-    reservation_time.substring(3)
-  );
-  const now = Date.now();
-  if (reservation > now) {
+  const reservation = new Date(`${reservation_date} PDT`);
+  const now = new Date();
+  console.log({
+    reservation: reservation,
+    now: now,
+  })
+  let re = reservation.getTime();
+  let nowe = now.getTime();
+  console.log('re - nowe', re>nowe)
+  if (re > nowe) {
     return next();
   } else {
     return next({
@@ -93,8 +97,13 @@ function duringOperatingHours(req, res, next) {
   const { reservation_time } = req.body.data;
   const open = 1030;
   const close = 2130;
-  const reservation =
+  console.log('reservtaion time ',reservation_time)
+  let reservation =
     reservation_time.substring(0, 2) + reservation_time.substring(3);
+    reservation = reservation.split(':');
+    console.log('reservtaion time ',reservation)
+    reservation = parseInt(reservation[0]);
+    console.log(reservation);
   if (reservation > open && reservation < close) {
     return next();
   } else {
@@ -195,11 +204,16 @@ function statusIsntFinished(req, res, next) {
 async function list(req, res) {
   const { date, mobile_number } = req.query;
   let reservations;
+  console.log('list');
+  console.log(date, mobile_number);
   if (mobile_number) {
     reservations = await service.find(mobile_number);
+    console.log(reservations)
   } else {
+    const newDate = new Date(`${date} PDT`);
+    console.log('new date', newDate);
     reservations = date
-      ? await service.listByDate(new Date(date))
+      ? await service.listByDate(newDate)
       : await service.list();
   }
   res.json({

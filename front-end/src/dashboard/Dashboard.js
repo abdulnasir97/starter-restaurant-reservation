@@ -32,32 +32,6 @@ function Dashboard({ date }) {
   // load the reservations by date
   useEffect(() => {
     const abortController = new AbortController();
-
-    async function loadDashboard() {
-      try {
-        setDashboardError([]);
-        const reservationDate = await listReservations({ date }, abortController.signal);
-        setReservations(reservationDate);
-      } catch (error) {
-        setReservations([]);
-        setDashboardError([error.message]);
-      }
-    }
-
-    loadDashboard();
-
-    return () => {
-      abortController.abort();
-      setReservations([]);
-    };
-  }, [date]);
-
-
-
-  // load all tables
-  useEffect(() => {
-    const abortController = new AbortController();
-
     async function loadTables() {
       try {
         setDashboardError([]);
@@ -69,13 +43,52 @@ function Dashboard({ date }) {
       }
     }
 
+    async function loadDashboard() {
+      try {
+        setDashboardError([]);
+        const reservationDate = await listReservations({ date }, abortController.signal);
+        console.log(reservationDate);
+        setReservations(reservationDate);
+      } catch (error) {
+        setReservations([]);
+        setDashboardError([error.message]);
+      }
+    }
+
+    loadDashboard();
     loadTables();
 
     return () => {
       abortController.abort();
+      setReservations([]);
       setTables([]);
     };
-  }, []);
+  }, [date]);
+
+
+
+  // load all tables
+  // useEffect(() => {
+  //   const abortController = new AbortController();
+
+  //   async function loadTables() {
+  //     try {
+  //       setDashboardError([]);
+  //       const tableList = await listTables(abortController.signal);
+  //       setTables(tableList);
+  //     } catch (error) {
+  //       setTables([]);
+  //       setDashboardError([error.message]);
+  //     }
+  //   }
+
+  //   loadTables();
+
+  //   return () => {
+  //     abortController.abort();
+  //     setTables([]);
+  //   };
+  // }, []);
 
 
    return (
