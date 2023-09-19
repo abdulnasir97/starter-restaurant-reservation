@@ -32,3 +32,21 @@ Javascript, React, HTML, CSS, Bootstrap <br>
 <br>
 Backend: <br>
 Node.js, Express, Knex, PostgreSQL
+
+Photos<br>
+<br>
+![1](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/74041429-c63b-4c97-8afd-d71b45dd59b4)
+
+
+![2](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/f5f942a5-62d3-4a84-9629-d067ec7e9b9d)
+
+
+![3](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/aed8a528-392e-4642-9538-e4b4f5caa85f)
+
+
+![4](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/6c9c303c-0073-49d2-aac3-494aea923aef)
+
+
+
+
+
