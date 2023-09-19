@@ -1,5 +1,3 @@
-/** @format */
-
 const dateFormat = /\d\d\d\d-\d\d-\d\d/;
 const timeFormat = /\d\d:\d\d/;
 
@@ -15,9 +13,9 @@ const timeFormat = /\d\d:\d\d/;
  *  the specified Date formatted as YYYY-MM-DD
  */
 function asDateString(date) {
-	return `${date.getFullYear().toString(10)}-${(date.getMonth() + 1)
-		.toString(10)
-		.padStart(2, "0")}-${date.getDate().toString(10).padStart(2, "0")}`;
+  return `${date.getFullYear().toString(10)}-${(date.getMonth() + 1)
+    .toString(10)
+    .padStart(2, "0")}-${date.getDate().toString(10).padStart(2, "0")}`;
 }
 
 /**
@@ -28,7 +26,7 @@ function asDateString(date) {
  *  the specified date string formatted as YYYY-MM-DD
  */
 export function formatAsDate(dateString) {
-	return dateString.match(dateFormat)[0];
+  return dateString.match(dateFormat)[0];
 }
 
 /**
@@ -39,7 +37,7 @@ export function formatAsDate(dateString) {
  *  the specified time string formatted as YHH:MM.
  */
 export function formatAsTime(timeString) {
-	return timeString.match(timeFormat)[0];
+  return timeString.match(timeFormat)[0];
 }
 
 /**
@@ -48,7 +46,7 @@ export function formatAsTime(timeString) {
  *  the today's date formatted as YYYY-MM-DD
  */
 export function today() {
-	return asDateString(new Date());
+  return asDateString(new Date());
 }
 
 /**
@@ -59,12 +57,12 @@ export function today() {
  *  the date one day prior to currentDate, formatted as YYYY-MM-DD
  */
 export function previous(currentDate) {
-	let [year, month, day] = currentDate.split("-");
-	month -= 1;
-	const date = new Date(year, month, day);
-	date.setMonth(date.getMonth());
-	date.setDate(date.getDate() - 1);
-	return asDateString(date);
+  let [ year, month, day ] = currentDate.split("-");
+  month -= 1;
+  const date = new Date(year, month, day);
+  date.setMonth(date.getMonth());
+  date.setDate(date.getDate() - 1);
+  return asDateString(date);
 }
 
 /**
@@ -75,10 +73,10 @@ export function previous(currentDate) {
  *  the date one day after currentDate, formatted as YYYY-MM-DD
  */
 export function next(currentDate) {
-	let [year, month, day] = currentDate.split("-");
-	month -= 1;
-	const date = new Date(year, month, day);
-	date.setMonth(date.getMonth());
-	date.setDate(date.getDate() + 1);
-	return asDateString(date);
+  let [ year, month, day ] = currentDate.split("-");
+  month -= 1;
+  const date = new Date(year, month, day);
+  date.setMonth(date.getMonth());
+  date.setDate(date.getDate() + 1);
+  return asDateString(date);
 }

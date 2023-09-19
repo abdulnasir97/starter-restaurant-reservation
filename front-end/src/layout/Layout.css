@@ -1,27 +1,4 @@
-*{
-  font-family: 'Calibri', fantasy;
-}
-
 .side-bar {
-  background-color: rgb(63, 183, 253);
-  min-width: 250px;
-  flex-wrap: wrap;
-  
-  
-}
-
-
-
-
-
-/* -------  Media Query ------- */
-
-/*for desktop*/
-
-@media all and (min-width: 750px){
-
-.side-bar { 
-  height: 110vh;
-  
-}
+  background-color: #393a44;
+  min-width: 200px;
 }
