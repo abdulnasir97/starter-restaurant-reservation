@@ -7,4 +7,9 @@ exports.seed = function (knex) {
 		.then(function () {
 			return knex("reservations").insert(reservations);
 		});
+};const reservations = require("./00-reservations.json");
+exports.seed = function (knex) {
+  return knex.raw("TRUNCATE TABLE reservations RESTART IDENTITY CASCADE").then(() => {
+    return knex("reservations").insert(reservations);
+  });
 };
