@@ -69,6 +69,8 @@ function CreateReservation() {
     }
   }, [reservationRequest, submitted, validationErrors.length, history]);
 
+
+
   return (
     <div className="container mt-4 p-4">
       <ReservationForm goBack={goBack} formData={reservationRequest} handleChange={handleChange} handleSubmit={submitHandler}/>

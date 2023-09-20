@@ -1,4 +1,16 @@
 .side-bar {
-  background-color: #393a44;
+  background-color: #900000;
   min-width: 200px;
+}
+
+.bg-dark {
+  background-color:#0019f62f;
+}
+
+.navbar {
+  background-color: #0019f62f;
+}
+
+.dashboard {
+  background-color: #0019f62f;
 }

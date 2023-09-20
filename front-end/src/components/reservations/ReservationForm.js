@@ -28,7 +28,7 @@ function ReservationForm({handleChange, handleSubmit, goBack, formData}) {
         <label className="form-label" htmlFor="mobile_number">Mobile number</label>
         <input
           className="form-control"
-          type="text"
+          type="tel"
           id="mobile_number"
           name="mobile_number"
           placeholder="Mobile number"
