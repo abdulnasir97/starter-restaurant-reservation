@@ -86,13 +86,13 @@ function Dashboard({ date }) {
   return (
     <React.Fragment>
       <main className="dashboard">
-        <h1 className="display-1 text-center m-4 p-6">Dashboard</h1>
+        <h4 className="display-1 text-center m-4 p-6">Dashboard</h4>
         <div className="row d-flex justify-content-center">
           <div className="col-4 mr-4">
             <div className="card border-4 shadow">
               <div className="card-body">
                 <h4 className="card-title text-center display-5 font-weight-bold m-3">
-                  Reservations for date {currentDate}
+                  Reservations for {currentDate}
                 </h4>
                 <div className="reservation-table">
                   <div className="table-responsive">
@@ -109,7 +109,7 @@ function Dashboard({ date }) {
                             Time
                           </th>
                           <th scope="col" className="text-nowrap">
-                            Phone #
+                            Phone 
                           </th>
                           <th scope="col" className="text-nowrap">
                             Party Size
