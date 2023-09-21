@@ -4,7 +4,7 @@ This system empowers restaurants to manage their tables by assigning names and c
 The technologies used are HTML, CSS, JS, React, Express, PostgreSQL, and Knex.<br><br>
 Live link: <br><br>
 To install, please fork and clone the repository. Open the folder in your code editor and run "npm i" in the front-end directory. Run the command again in the back-end directory. Once completed, run "npm start" and the repo should launch locally on your machine.<br><br>
-API Documentation<br><br>
+API Documentation:<br><br>
 
 | Method              | Route | Desc |
 | :---------------- | :------: | ----: |
