@@ -89,9 +89,9 @@ function Dashboard({ date }) {
         <h4 className="display-1 text-center m-4 p-6">Dashboard</h4>
         <div className="row d-flex justify-content-center">
           <div className="col-4 mr-4">
-            <div className="card border-4 shadow">
+            <div className="card border-3 shadow">
               <div className="card-body">
-                <h4 className="card-title text-center display-5 font-weight-bold m-3">
+                <h4 className="card-title text-center display-5 font-weight-bold m-2">
                   Reservations for {currentDate}
                 </h4>
                 <div className="reservation-table">
@@ -202,18 +202,18 @@ function Dashboard({ date }) {
                 <div className="container">
                   <div className="d-flex justify-content-center">
                     <button
-                      className="btn btn-primary mr-2"
+                      className="btn btn-primary mr-3"
                       onClick={handlePrevious}
                     >
                       Previous
                     </button>
                     <button
-                      className="btn btn-primary mr-1"
+                      className="btn btn-primary mr-2"
                       onClick={handleToday}
                     >
                       Today
                     </button>
-                    <button className="btn btn-primary ml-1" onClick={handleNext}>
+                    <button className="btn btn-primary ml-2" onClick={handleNext}>
                       Next
                     </button>
                   </div>
@@ -223,9 +223,9 @@ function Dashboard({ date }) {
           </div>
           <div>
             <div className="container">
-              <div className="card border-4 shadow">
+              <div className="card border-3 shadow">
                 <div className="card-body">
-                  <h4 className="card-title text-center display-5 font-weight-bold m-3">
+                  <h4 className="card-title text-center display-5 font-weight-bold m-2">
                     Tables
                   </h4>
                   <table className="table table-striped table-hover table-bordered">

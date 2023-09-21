@@ -78,7 +78,8 @@ async function updateStatus(req, res, next) {
   res.json({ data });
 }
 
-//helper functions
+// The helper functions are below.
+
 let fields = [
   "first_name",
   "last_name",
@@ -132,7 +133,7 @@ function validateSpecific(req, res, next) {
   }
 
   if (reservationDay === 2) {
-    next({ status: 400, message: `Restaurant is closed on Tuesdays` });
+    next({ status: 400, message: `The restaurant is closed on Tuesdays` });
   }
 
   currentDate.setUTCHours(0, 0, 0, 0);
@@ -141,13 +142,13 @@ function validateSpecific(req, res, next) {
     reservationDateTime.toISOString() < currentDate.toISOString() &&
     reservationTime < currentTime;
   if (isPastDate || isSameDateAndPastTime) {
-    next({ status: 400, message: `Reservation date must be in the future` });
+    next({ status: 400, message: `The reservation date must be in the future` });
   }
 
   if (reservationTime < 630 || reservationTime > 1350) {
     next({
       status: 400,
-      message: "Reservation time must be between 10:30 AM and 9:30 PM",
+      message: "The reservation time must be between 10:30 AM and 9:30 PM",
     });
   }
 
@@ -169,7 +170,7 @@ function validateSpecific(req, res, next) {
 
 async function validateStatus(req, res, next) {
   const { status } = req.body.data;
-  const { reservation_id } = req.params; // Extract reservation_id from req.params
+  const { reservation_id } = req.params; 
   const foundReservation = await service.read(reservation_id);
   if (foundReservation) {
     res.locals.reservation = foundReservation;

@@ -19,7 +19,7 @@ async function update(req, res, next) {
   const { reservation_id, status } = res.locals.reservation;
   const { table_id } = req.params;
   if(status === "seated") {
-    next({status: 400, message: "reservation is already seated"});
+    next({status: 400, message: "The reservation is already seated."});
   }
   const data = await service.update(table_id, reservation_id);
   res.status(200).json({ data });
@@ -34,7 +34,8 @@ async function finish(req, res) {
   res.status(200).json({ data });
 }
 
-//helper functions
+// The helper functions are below.
+
 let fields = ["table_name", "capacity"];
 
 function validateDataExists(req, res, next) {
@@ -61,7 +62,7 @@ function createValidatorFor(field) {
   };
 }
 
-function validateTableName(req, res, next) {
+function validateTabName(req, res, next) {
   const { table_name } = req.body.data;
   if (table_name.length < 2) {
     next({
@@ -73,7 +74,7 @@ function validateTableName(req, res, next) {
   }
 }
 
-function validateTableCapacity(req, res, next) {
+function validateTableCap(req, res, next) {
   const { capacity } = req.body.data;
   if (typeof capacity !== "number") {
     next({
@@ -85,6 +86,7 @@ function validateTableCapacity(req, res, next) {
   }
 }
 
+// Check if reservation_id exists and whether it has an existing reservation.
 async function validateReservationId(req, res, next) {
   const { reservation_id } = req.body.data;
   if (!reservation_id) {
@@ -106,6 +108,7 @@ async function validateReservationId(req, res, next) {
   }
 }
 
+// This is to check if the table for the given table_id is available for reservation. 
 async function validateCapacityAndAvailability(req, res, next) {
   const { table_id } = req.params;
   const data = await service.read(table_id);
@@ -117,6 +120,7 @@ async function validateCapacityAndAvailability(req, res, next) {
   } else {
     console.log(data);
     res.locals.table = data;
+    // Check if res party size exceeds the table cap.
     if (res.locals.reservation.people > res.locals.table.capacity) {
       next({
         status: 400,
@@ -131,10 +135,12 @@ async function validateCapacityAndAvailability(req, res, next) {
   }
 }
 
+// To check if a table is occupied or not using the table_id. 
 async function validateOccupiedTable(req, res, next) {
   const { table_id } = req.params;
   const foundTable = await service.read(table_id);
   if (foundTable) {
+    // If table exists, check if it has a reservation_id otherwise invoke 'next'.
     if (!foundTable.reservation_id) {
       next({
         status: 400,
@@ -157,8 +163,8 @@ module.exports = {
   create: [
     validateDataExists,
     ...fields.map(createValidatorFor),
-    validateTableName,
-    validateTableCapacity,
+    validateTabName,
+    validateTableCap,
     asyncErrorBoundary(create),
   ],
   update: [
