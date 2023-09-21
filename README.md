@@ -19,3 +19,13 @@ API Documentation:<br><br>
 | PUT | /tables/:table_id/seat   | Assign a table to a reservation (changes reservation's status to "seated") |
 | DELETE |  /tables/:table_id/seat   | Remove reservation from a table (changes reservation's status to "finished") |
 
+<br><br>
+Photos:<br><br>
+![1](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/b14484ad-48cc-4404-8fe5-02f2fcbf3912)
+
+![2](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/283a983b-f825-4e37-a8e1-6bcc5b0bb022)
+
+![3](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/4db519f4-dc21-492b-8a84-0481e0f0ed55)
+
+![4](https://github.com/abdulnasir97/starter-restaurant-reservation/assets/120065583/eb06b7b3-40df-4f09-bb13-50d18d4d5f71)
+
