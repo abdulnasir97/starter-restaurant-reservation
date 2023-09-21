@@ -86,7 +86,7 @@ function Dashboard({ date }) {
   return (
     <React.Fragment>
       <main className="dashboard">
-        <h4 className="display-1 text-center m-4 p-6">Dashboard</h4>
+        {/*<h4 className="display-1 text-center m-4 p-6">Dashboard</h4>*/}
         <div className="row d-flex justify-content-center">
           <div className="col-4 mr-4">
             <div className="card border-3 shadow">
